@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,39 +13,48 @@
     <script src="assets/js/my-script.js"></script>
 
 </head>
+
 <body id="body" class="body-items">
 
-    <header id="header" class="body-item sidebar-header">
+    <!-- Hamburger Menu -->
+    <div id="mobile-menu-toggle" class="d-lg-none">
+        <button class="menu-toggle-btn" onclick="toggleSidebar()">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+
+    <!-- Sidebar -->
+    <header id="header">
         <div class="my-profile">
             <div class="profile-pic">
-                <img src="assets/img/bg-profile1.jpg" class="my-profile-pic" alt="">
-                <!-- <img src="assets/img/empty-profile.png" class="my-profile-pic" alt=""> -->
+                <img src="assets/img/bg-profile1.jpg" alt="Profile" />
             </div>
-
-            <a href="/" class="d-flex align-items-center justify-content-center"><h1>Aman Kumar</h1></a>
-            
+            <a href="#">
+                <h1>Aman Kumar</h1>
+            </a>
             <div class="social-links text-center">
-                <a href="/"><i class="fab fa-x-twitter"></i></a>
-                <a href="/"><i class="fab fa-facebook-f"></i></a>
-                <a href="/"><i class="fab fa-instagram"></i></a>
-                <a href="/"><i class="fab fa-skype"></i></a>
-                <a href="/"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-x-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-skype"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
 
         <div class="sidebar-tabs">
             <ul class="tab-list">
-                <li><a href=""><i class="fa fa-home"></i>Home</a></li>
-                <li><a href=""><i class="fa fa-user"></i>About</a></li>
-                <li><a href=""><i class="fa fa-file"></i>Resume</a></li>
-                <li><a href=""><i class="fa fa-images"></i>Portfolio</a></li>
-                <li><a href=""><i class="fa fa-bars"></i>Dropdown <i class="fa fa-down"></i></a></li>
-                <li><a href=""><i class="fa fa-envelope"></i>Contact</a></li>
+                <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
+                <li><a href="#"><i class="fa fa-user"></i>About</a></li>
+                <li><a href="#"><i class="fa fa-file"></i>Resume</a></li>
+                <li><a href="#"><i class="fa fa-images"></i>Portfolio</a></li>
+                <li><a href="#"><i class="fa fa-bars"></i>Dropdown</a></li>
+                <li><a href="#"><i class="fa fa-envelope"></i>Contact</a></li>
             </ul>
         </div>
     </header>
 
-    <section id="main_body" class="body-item main-section">
+    <!-- Main Body -->
+    <section id="main_body">
         <div class="about-me background-image">
             <div class="basic-info">
                 <h2>Hello, I'm Aman Kumar</h2>
@@ -53,5 +63,9 @@
         </div>
     </section>
 
+    <!-- Overlay -->
+    <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
+
 </body>
+
 </html>
