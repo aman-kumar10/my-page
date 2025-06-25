@@ -5,6 +5,10 @@ body {
   flex-direction: row;
 }
 
+header#header a {
+    text-decoration: none;
+}
+
 /* Sidebar */
 header#header {
   position: fixed;
@@ -24,7 +28,7 @@ header#header {
   width: 120px;
   margin: 0 auto 15px;
   border-radius: 70px;
-  border: 8px solid #fff;
+  border: 8px solid #212121;
 }
 
 .my-profile a h1 {
@@ -66,9 +70,11 @@ header#header {
   color: #a8a9b4;
   font-size: 18px;
   text-decoration: none;
+  margin: 10px;
 }
 
 .sidebar-tabs ul.tab-list li a i {
+  color: #fff;
   margin-right: 10px;
   font-size: 20px;
 }
@@ -101,7 +107,7 @@ section#main_body {
 
 .basic-info p {
   font-size: 20px;
-  color: #fff;
+  color: #8a8b85;
 }
 
 /* Mobile: Sidebar Hidden */
