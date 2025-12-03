@@ -7,7 +7,7 @@ function toggleSidebar() {
 
 const sheetId = "1oOD1YfyWnWBs-t3RFduhEGptTBwiCkvojmBQDJ6bL98";
 const apiKey = "AIzaSyDT_XhNJeOb9fIeWiFOjgpXGa6QQzikbCw";
-const sheetName = "mypageCMS";
+const sheetName = "mytestpage";
 
 async function loadSiteData() {
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${sheetName}?key=${apiKey}`;
