@@ -24,14 +24,27 @@ async function loadSiteData() {
             siteData[key] = value;
         });
 
-        // Profile
-        document.getElementById("name").innerText = siteData.name;
+        // DYNAMIC BACKGROUND IMAGE
+        const aboutSection = document.querySelector(".about-me.background-image");
+        if (aboutSection) {
+            aboutSection.style.backgroundImage = `
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('${siteData.background_image}')
+            `;
+        }
 
-        // Body Text
+        // DYNAMIC PROFILE IMAGE
+        const profileImg = document.getElementById("profile_image");
+        if (profileImg && siteData.profile_image) {
+            profileImg.src = siteData.profile_image;
+        }
+
+        // PROFILE NAME + TEXT
+        document.getElementById("name").innerText = siteData.name;
         document.getElementById("main_heading").innerText = siteData.name;
         document.getElementById("main_title").innerText = siteData.title;
 
-        // Menu (fixed: no += duplicate)
+        // MENU
         document.getElementById("menu_home").innerHTML = `<i class="fa fa-home"></i> ${siteData.menu_home}`;
         document.getElementById("menu_about").innerHTML = `<i class="fa fa-user"></i> ${siteData.menu_about}`;
         document.getElementById("menu_resume").innerHTML = `<i class="fa fa-file"></i> ${siteData.menu_resume}`;
@@ -39,7 +52,7 @@ async function loadSiteData() {
         document.getElementById("menu_dropdown").innerHTML = `<i class="fa fa-bars"></i> ${siteData.menu_dropdown}`;
         document.getElementById("menu_contact").innerHTML = `<i class="fa fa-envelope"></i> ${siteData.menu_contact}`;
 
-        // Social Links
+        // SOCIAL LINKS
         document.getElementById("twitter_url").href = siteData.twitter_url;
         document.getElementById("facebook_url").href = siteData.facebook_url;
         document.getElementById("instagram_url").href = siteData.instagram_url;
