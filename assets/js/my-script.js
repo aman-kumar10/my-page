@@ -24,6 +24,26 @@ async function loadSiteData() {
             siteData[key] = value;
         });
 
+        // Convert Google Drive preview to direct link
+        function convertDriveURL(url) {
+            if (url.includes("uc?export=view")) return url;
+            const match = url.match(/\/d\/(.*?)\//);
+            if (!match) return url;
+            const fileId = match[1];
+            return `https://drive.google.com/uc?export=view&id=${fileId}`;
+        }
+
+        siteData.profile_image = convertDriveURL(siteData.profile_image);
+
+        // Set background image
+        const aboutSection = document.querySelector(".about-me.background-image");
+        if (aboutSection) {
+            aboutSection.style.backgroundImage = `
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('${siteData.profile_image}')
+            `;
+        }
+
         // Profile
         document.getElementById("profile_image").src = siteData.profile_image;
         document.getElementById("name").innerText = siteData.name;
@@ -32,13 +52,13 @@ async function loadSiteData() {
         document.getElementById("main_heading").innerText = siteData.name;
         document.getElementById("main_title").innerText = siteData.title;
 
-        // Menu
-        document.getElementById("menu_home").innerHTML += siteData.menu_home;
-        document.getElementById("menu_about").innerHTML += siteData.menu_about;
-        document.getElementById("menu_resume").innerHTML += siteData.menu_resume;
-        document.getElementById("menu_portfolio").innerHTML += siteData.menu_portfolio;
-        document.getElementById("menu_dropdown").innerHTML += siteData.menu_dropdown;
-        document.getElementById("menu_contact").innerHTML += siteData.menu_contact;
+        // Menu (fixed: no += duplicate)
+        document.getElementById("menu_home").innerHTML = `<i class="fa fa-home"></i> ${siteData.menu_home}`;
+        document.getElementById("menu_about").innerHTML = `<i class="fa fa-user"></i> ${siteData.menu_about}`;
+        document.getElementById("menu_resume").innerHTML = `<i class="fa fa-file"></i> ${siteData.menu_resume}`;
+        document.getElementById("menu_portfolio").innerHTML = `<i class="fa fa-images"></i> ${siteData.menu_portfolio}`;
+        document.getElementById("menu_dropdown").innerHTML = `<i class="fa fa-bars"></i> ${siteData.menu_dropdown}`;
+        document.getElementById("menu_contact").innerHTML = `<i class="fa fa-envelope"></i> ${siteData.menu_contact}`;
 
         // Social Links
         document.getElementById("twitter_url").href = siteData.twitter_url;

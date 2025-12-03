@@ -88,10 +88,10 @@ section#main_body {
 
 .about-me.background-image {
   height: 100vh;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url(../img/bg-profile2.jpg) no-repeat center
-      center;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
