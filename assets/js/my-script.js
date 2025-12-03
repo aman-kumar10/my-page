@@ -4,3 +4,52 @@ function toggleSidebar() {
     sidebar.classList.toggle("sidebar-open");
     overlay.classList.toggle("active");
 }
+
+const sheetId = "1oOD1YfyWnWBs-t3RFduhEGptTBwiCkvojmBQDJ6bL98";
+const apiKey = "AIzaSyDT_XhNJeOb9fIeWiFOjgpXGa6QQzikbCw";
+const sheetName = "mypageCMS";
+
+async function loadSiteData() {
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${sheetName}?key=${apiKey}`;
+
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+        const rows = data.values;
+
+        let siteData = {};
+        rows.forEach(row => {
+            const key = row[0];
+            const value = row[1] || "";
+            siteData[key] = value;
+        });
+
+        // Profile
+        document.getElementById("profile_image").src = siteData.profile_image;
+        document.getElementById("name").innerText = siteData.name;
+
+        // Body Text
+        document.getElementById("main_heading").innerText = siteData.name;
+        document.getElementById("main_title").innerText = siteData.title;
+
+        // Menu
+        document.getElementById("menu_home").innerHTML += siteData.menu_home;
+        document.getElementById("menu_about").innerHTML += siteData.menu_about;
+        document.getElementById("menu_resume").innerHTML += siteData.menu_resume;
+        document.getElementById("menu_portfolio").innerHTML += siteData.menu_portfolio;
+        document.getElementById("menu_dropdown").innerHTML += siteData.menu_dropdown;
+        document.getElementById("menu_contact").innerHTML += siteData.menu_contact;
+
+        // Social Links
+        document.getElementById("twitter_url").href = siteData.twitter_url;
+        document.getElementById("facebook_url").href = siteData.facebook_url;
+        document.getElementById("instagram_url").href = siteData.instagram_url;
+        document.getElementById("skype_url").href = siteData.skype_url;
+        document.getElementById("linkedin_url").href = siteData.linkedin_url;
+
+    } catch (error) {
+        console.error("Error loading site data:", error);
+    }
+}
+
+loadSiteData();
