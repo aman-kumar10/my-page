@@ -24,28 +24,7 @@ async function loadSiteData() {
             siteData[key] = value;
         });
 
-        // Convert Google Drive preview to direct link
-        function convertDriveURL(url) {
-            if (url.includes("uc?export=view")) return url;
-            const match = url.match(/\/d\/(.*?)\//);
-            if (!match) return url;
-            const fileId = match[1];
-            return `https://drive.google.com/uc?export=view&id=${fileId}`;
-        }
-
-        siteData.profile_image = convertDriveURL(siteData.profile_image);
-
-        // Set background image
-        const aboutSection = document.querySelector(".about-me.background-image");
-        if (aboutSection) {
-            aboutSection.style.backgroundImage = `
-                linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                url('${siteData.profile_image}')
-            `;
-        }
-
         // Profile
-        document.getElementById("profile_image").src = siteData.profile_image;
         document.getElementById("name").innerText = siteData.name;
 
         // Body Text
